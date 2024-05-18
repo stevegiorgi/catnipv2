@@ -28,13 +28,35 @@ const config = {
     max_file_size: 2012000,
     folder_support: true,
   },
-  collections: [page, post, project, product, menu, settings],
+  collections: [
+    {
+      name: 'default',
+      label: 'Default',
+      files: [
+        {
+          name: 'default',
+          label: 'Default Page',
+          file: 'src/content/default.md',
+          fields: [
+            { label: 'Title', name: 'title', widget: 'string' },
+            { label: 'Body', name: 'body', widget: 'markdown' }
+          ]
+        }
+      ]
+    },
+    page,
+    post,
+    project,
+    product,
+    menu,
+    settings
+  ]
 };
 ---
 
 <!doctype html>
 <html>
-  <head>
+  <head>``
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nebulix Admin | by unfolding.io</title>
