@@ -21,9 +21,8 @@ const m2dxOptions = {
   autoImports: true,
 };
 
-// https://astro.build/config
 export default defineConfig({
-  site: "https://nebulix.unfolding.io",
+  site: "https://getcatnip.xyz",
   integrations: [
     icon(),
     mdx({}),
