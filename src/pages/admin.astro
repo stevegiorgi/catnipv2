@@ -14,49 +14,64 @@ const lang = import.meta.env.WEBSITE_LANGUAGE;
 const url = Astro.site;
 
 const config = {
-  locale: lang,
-  site_url: url,
-  logo_url: "https://nebulix.unfolding.io/logo.svg",
-  local_backend: true,
   backend: {
-    name: "test-repo",
+    name: 'git-gateway',
+    branch: 'main',
   },
-  search: true,
   media_folder: "src/assets",
   public_folder: "/src/assets",
-  media_library: {
-    max_file_size: 2012000,
-    folder_support: true,
-  },
   collections: [
     {
-      name: 'default',
-      label: 'Default',
-      files: [
-        {
-          name: 'default',
-          label: 'Default Page',
-          file: 'src/content/default.md',
-          fields: [
+      name: 'pages',
+      label: 'Pages',
+      folder: 'content/pages', // Update this to match your directory
+      create: true,
+      slug: '{{slug}}',
+      fields: [
+        { label: 'Title', name: 'title', widget: 'string' },
+        { label: 'Description', name: 'description', widget: 'text' },
+        { label: 'Intro', name: 'intro', widget: 'string' },
+        { label: 'Hero Template', name: 'hero_template', widget: 'string' },
+        { label: 'Template', name: 'template', widget: 'string' },
+        { label: 'Container', name: 'container', widget: 'string' },
+        { label: 'Hero Buttons', name: 'hero_buttons', widget: 'list', fields: [
+            { label: 'Component', name: 'component', widget: 'string' },
+            { label: 'Label', name: 'label', widget: 'string' },
+            { label: 'Href', name: 'href', widget: 'string' },
+            { label: 'Class', name: 'class', widget: 'string' },
+            { label: 'Icon Only', name: 'icon_only', widget: 'boolean' },
+            { label: 'Icon', name: 'icon', widget: 'string' },
+            { label: 'Color', name: 'color', widget: 'string' }
+          ] 
+        },
+        { label: 'Pub Date', name: 'pubDate', widget: 'datetime' },
+        { label: 'Layout Hidden', name: 'layout-hidden', widget: 'string' },
+        { label: 'Blocks', name: 'blocks', widget: 'list', fields: [
+            { label: 'Type', name: 'type', widget: 'string' },
+            { label: 'Component', name: 'component', widget: 'string' },
+            { label: 'Container', name: 'container', widget: 'string' },
+            { label: 'Block Class', name: 'block_class', widget: 'string' },
+            { label: 'Content', name: 'content', widget: 'markdown' },
+            { label: 'Surface', name: 'surface', widget: 'string' },
+            { label: 'Thumbnail', name: 'thumbnail', widget: 'string' },
             { label: 'Title', name: 'title', widget: 'string' },
-            { label: 'Body', name: 'body', widget: 'markdown' }
-          ]
+            { label: 'Reverse', name: 'reverse', widget: 'boolean' },
+            { label: 'Animate', name: 'animate', widget: 'boolean' },
+            { label: 'Template', name: 'template', widget: 'string' },
+            { label: 'Href', name: 'href', widget: 'string' },
+            { label: 'Icon', name: 'icon', widget: 'string' },
+            { label: 'Color', name: 'color', widget: 'string' }
+          ] 
         }
       ]
-    },
-    page,
-    post,
-    project,
-    product,
-    menu,
-    settings
+    }
   ]
 };
 ---
 
 <!doctype html>
 <html>
-  <head>``
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nebulix Admin | by unfolding.io</title>
