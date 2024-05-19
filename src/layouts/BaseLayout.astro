@@ -111,5 +111,13 @@ const contact = await getEntry("config", "contact");
       SmoothScroll();
       document.addEventListener("astro:beforeload", SmoothScroll);
     </script>
+
+    <script>
+      if (location.href.indexOf("#invite_token") !== -1) {
+        var urlSplit = document.URL.split("#");
+        window.location.href = `/admin/#${urlSplit[1]}`;
+      }
+    </script>
+
   </body>
 </html>
